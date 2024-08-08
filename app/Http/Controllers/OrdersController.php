@@ -10,7 +10,8 @@ class OrdersController extends Controller
     public function index(OrderService $orderService)
     {
         $orders = $orderService->getAll();
-        return view('orders.index', compact('orders'));
+        $totalSum = $orderService->countTotalSum($orders);
+        return view('orders.index', compact('orders', 'totalSum'));
     }
 
     public function store(OrderService $orderService) {

@@ -5,11 +5,23 @@ namespace App\Service;
 
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Collection;
 
 class OrderService
 {
     public function getAll() {
         return Auth::user()->orders()->with('items')->get();
+    }
+
+    public function countTotalSum(Collection $orders) {
+        $totalSum = 0;
+
+        $allItems = $orders->flatMap->items;
+        foreach ($allItems as $item) {
+            $totalSum += $item->price * $item->count;
+        }
+
+        return $totalSum;
     }
 
     public function create() {

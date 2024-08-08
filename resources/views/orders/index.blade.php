@@ -36,6 +36,13 @@
                         </tbody>
                     </table>
                 @endforeach
+
+                <table>
+                    <tr>
+                        <td><b>{{__('orders.total')}}</b></td>
+                        <td>{{$totalSum}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
