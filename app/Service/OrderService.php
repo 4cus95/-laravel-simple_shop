@@ -13,7 +13,7 @@ class OrderService
         return Auth::user()->orders()->with('items')->get();
     }
 
-    public function countTotalSum(Collection $orders) {
+    public function countTotalSum(Collection $orders):int {
         $totalSum = 0;
 
         $allItems = $orders->flatMap->items;
