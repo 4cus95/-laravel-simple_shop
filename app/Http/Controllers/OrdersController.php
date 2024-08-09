@@ -9,6 +9,8 @@ class OrdersController extends Controller
 {
     public function index(OrderService $orderService)
     {
+        $this->authorize('viewAny', Order::class);
+
         $orders = $orderService->getAll();
         $totalSum = $orderService->countTotalSum($orders);
         return view('orders.index', compact('orders', 'totalSum'));
