@@ -17,6 +17,8 @@ class OrdersController extends Controller
     }
 
     public function store(OrderService $orderService) {
+        $this->authorize('create', Order::class);
+
         $orderService->create();
         return redirect()->route('orders.index')->with('success', __('orders.created'));
     }
