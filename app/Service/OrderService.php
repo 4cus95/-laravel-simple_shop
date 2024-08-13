@@ -48,10 +48,6 @@ class OrderService
     }
 
     public function destroy(Order $order) {
-        if(Auth::user()->id != $order->user_id) {
-            return;
-        }
-
         $order->delete();
     }
 }
