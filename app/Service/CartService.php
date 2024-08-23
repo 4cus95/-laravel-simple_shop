@@ -25,7 +25,6 @@ class CartService
             $cart->products()->updateExistingPivot($product->id, ['count' => $newCount]);
         } else {
             $cart->products()->attach($product->id, ['count' => $count]);
-            $cart->products()->where('product_id', $product->id)->first();
         }
     }
 }
